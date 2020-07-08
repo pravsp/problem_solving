@@ -1,5 +1,5 @@
 """Binary tree operation."""
-from .treenode import TreeNode
+from treenode import TreeNode
 
 
 class BinaryTree:
@@ -22,7 +22,7 @@ class BinaryTree:
         """Print node in preorder traversal format.
 
         :param root_node: Root node to traverse
-        :type root_node: binarytree.treenode.TreeNode
+        :type root_node: treenode.TreeNode
         :param list traversal_l: Data to be collected in traversal list
         """
         if not root_node:
@@ -43,7 +43,7 @@ class BinaryTree:
         """Print node in postorder traversal format.
 
         :param root_node: Root node to traverse
-        :type root_node: binarytree.treenode.TreeNode
+        :type root_node: treenode.TreeNode
         :param list traversal_l: Data to be collected in traversal list
         """
         if not root_node:
@@ -64,7 +64,7 @@ class BinaryTree:
         """Print node in inorder traversal format.
 
         :param root_node: Root node to traverse
-        :type root_node: binarytree.treenode.TreeNode
+        :type root_node: treenode.TreeNode
         :param list traversal_l: Data to be collected in traversal list
         """
         if not root_node:
@@ -101,9 +101,9 @@ class BinaryTree:
                        / \
                       2   4
         :param parent_node: parent node on which rotation has to be performed
-        :type parent_node: binarytree.treenode.TreeNode
+        :type parent_node: treenode.TreeNode
         :return rotated parent node
-        :rtype: binarytree.treenode.TreeNode
+        :rtype: treenode.TreeNode
         """
         if not parent_node:
             raise Exception("Invalid parent node")
@@ -134,9 +134,9 @@ class BinaryTree:
                       2   4
 
         :param parent_node: parent node on which rotation has to be performed
-        :type parent_node: binarytree.treenode.TreeNode
+        :type parent_node: treenode.TreeNode
         :return rotated parent node
-        :rtype: binarytree.treenode.TreeNode
+        :rtype: treenode.TreeNode
         """
         if not parent_node:
             raise Exception("Invalid parent node")
@@ -177,9 +177,9 @@ class BinaryTree:
                       2   4
 
         :param parent_node: parent node on which rotation has to be performed
-        :type parent_node: binarytree.treenode.TreeNode
+        :type parent_node: treenode.TreeNode
         :return rotated parent node
-        :rtype: binarytree.treenode.TreeNode
+        :rtype: treenode.TreeNode
         """
         parent_node = BinaryTree._left_rotation(parent_node)
         return BinaryTree._right_rotation(parent_node)
@@ -216,9 +216,9 @@ class BinaryTree:
                       2   4
 
         :param parent_node: parent node on which rotation has to be performed
-        :type parent_node: binarytree.treenode.TreeNode
+        :type parent_node: treenode.TreeNode
         :return rotated parent node
-        :rtype: binarytree.treenode.TreeNode
+        :rtype: treenode.TreeNode
         """
         parent_node = BinaryTree._right_rotation(parent_node)
         return BinaryTree._left_rotation(parent_node)
@@ -228,7 +228,7 @@ class BinaryTree:
         """Print node in inorder traversal format.
 
         :param root_node: Root node to traverse
-        :type root_node: binarytree.treenode.TreeNode
+        :type root_node: treenode.TreeNode
         :param list traversal_l: Data to be collected in traversal list
         """
         level_que = list()
@@ -272,7 +272,7 @@ class BinaryTree:
         """Find data in binady tree.
 
         :param root_node: Root node to traverse
-        :type root_node: binarytree.treenode.TreeNode
+        :type root_node: treenode.TreeNode
         :param int data: data to be added to new node
         :return boolean: True if data exists else False
         :rtype bool
@@ -327,7 +327,7 @@ class BinaryTree:
         """Get balance factor of parent node.
 
         :param parent_node: Node to which balance factor is retrieved
-        :type parent_node: binarytree.treenode.TreeNode
+        :type parent_node: treenode.TreeNode
         :return balance factor of parent node
         :rtype: int
         """
@@ -373,7 +373,7 @@ class BinaryTree:
         """Get the height of the binary tree.
 
         :param root_node: root node of the binary tree
-        :type root_node: binarytree.treenode.TreeNode
+        :type root_node: treenode.TreeNode
         :return height of the binary tree
         :rtype int
         """
