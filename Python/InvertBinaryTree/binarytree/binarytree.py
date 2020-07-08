@@ -8,10 +8,9 @@ class BinaryTree:
     InOrder = "inorder-traversal"
     LevelOrder = "levelorder-traversal"
 
-    def __init__(self, verbose=False):
+    def __init__(self):
         '''Create an Binary Tree instance.'''
         self.root = None
-        self.verbose = verbose
         self.traverse = dict()
         self.traverse[self.PreOrder] = BinaryTree._preOrderTraversal
         self.traverse[self.PostOrder] = BinaryTree._postOrderTraversal
@@ -82,10 +81,10 @@ class BinaryTree:
         BinaryTree._inOrderTraversal(root_node.right, traversal_l, internal)
 
     @staticmethod
-    def _left_rotation(parent_node):
-        """Do a left rotation on given parent node.
+    def _right_rotation(parent_node):
+        """Do a right rotation on given parent node.
 
-        Example of left rotation (Height of left 3 and height of right 1)
+        Example of right rotation (Height of left 3 and height of right 1)
                            5
                           / \
                          /   \
@@ -114,10 +113,10 @@ class BinaryTree:
         return left_node
 
     @staticmethod
-    def _right_rotation(parent_node):
-        """Do a right rotation on given parent node.
+    def _left_rotation(parent_node):
+        """Do a left rotation on given parent node.
 
-        Example of right rotation (Height of left 3 and height of right 1)
+        Example of left rotation (Height of left 3 and height of right 1)
                            5
                           / \
                          /   \
@@ -182,8 +181,7 @@ class BinaryTree:
         :return rotated parent node
         :rtype: binarytree.treenode.TreeNode
         """
-        right_node = parent_node.right
-        parent_node.right = BinaryTree._left_rotation(right_node)
+        parent_node = BinaryTree._left_rotation(parent_node)
         return BinaryTree._right_rotation(parent_node)
 
     @staticmethod
@@ -222,8 +220,7 @@ class BinaryTree:
         :return rotated parent node
         :rtype: binarytree.treenode.TreeNode
         """
-        left_node = parent_node.left
-        parent_node.left = BinaryTree._right_rotation(left_node)
+        parent_node = BinaryTree._right_rotation(parent_node)
         return BinaryTree._left_rotation(parent_node)
 
     @staticmethod
@@ -256,7 +253,7 @@ class BinaryTree:
             if node.right:
                 level_que.append({'node': node.right, 'level': level + 1})
 
-    def printTree(self, traversal=LevelOrder):
+    def printTree(self, traversal=LevelOrder, verbose=False):
         """ Print the contents of the tree.
 
         :params enum traversal: Traversal order for the tree
@@ -266,7 +263,7 @@ class BinaryTree:
             traversal = BinaryTree.LevelOrder   # Default traversal order
 
         traversal_l = list()
-        self.traverse[traversal](self.root, traversal_l, internal=self.verbose)
+        self.traverse[traversal](self.root, traversal_l, internal=verbose)
         from pprint import pformat
         print(pformat(traversal_l))
 
@@ -323,6 +320,7 @@ class BinaryTree:
                 parent_node.setLeft(node)
             else:
                 parent_node.setRight(node)
+            self.root = BinaryTree._balanceBst(self.root)
 
     @staticmethod
     def _getBalanceFactor(parent_node):
